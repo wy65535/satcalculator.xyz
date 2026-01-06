@@ -1,0 +1,8 @@
+# Cloudflare Pages Redirects Configuration
+# Redirect rules for the SAT Calculator website
+
+# Redirect www to non-www (if needed)
+https://www.satcalculator.xyz/* https://satcalculator.xyz/:splat 301!
+
+# Fallback to index.html for SPA-like behavior (not needed for static site, but good to have)
+/* /index.html 200
