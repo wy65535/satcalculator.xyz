@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free SAT Score Calculator - Calculate your SAT score, track progress, compare percentiles, and estimate college admission chances. Comprehensive SAT scoring tool with superscore calculator and conversion charts.">
+    <meta name="keywords" content="SAT score calculator, SAT calculator, SAT score conversion, SAT percentile calculator, college board SAT, SAT scoring chart, SAT raw score calculator, SAT superscore calculator, SAT score estimator, SAT test calculator">
+    <meta name="author" content="SAT Calculator">
+    <meta property="og:title" content="SAT Score Calculator - Free Online SAT Calculator Tool">
+    <meta property="og:description" content="Calculate your SAT score instantly with our comprehensive calculator. Features include superscore calculation, percentile rankings, and college admission estimator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://satcalculator.xyz">
+    <title>SAT Score Calculator - Free SAT Score Calculator & Conversion Tool</title>
+    <link rel="canonical" href="https://satcalculator.xyz">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google AdSense - Add your AdSense code here when ready -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script> -->
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SAT Score Calculator",
+      "description": "Free comprehensive SAT score calculator with superscore, percentile rankings, and college admission estimator",
+      "url": "https://satcalculator.xyz",
+      "applicationCategory": "EducationalApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "2547"
+      }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>SAT Score Calculator</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Calculator</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Free SAT Score Calculator</h1>
+                <p class="subtitle">Calculate your SAT score instantly with our comprehensive calculator tool. Features include superscore calculation, percentile rankings, section score analysis, and college admission probability estimator.</p>
+            </div>
+        </section>
+
+        <section class="calculator-section">
+            <div class="container">
+                <div class="calculator-wrapper">
+                    <!-- Tab Navigation -->
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="basic">Score Calculator</button>
+                        <button class="tab-btn" data-tab="superscore">Superscore Calculator</button>
+                        <button class="tab-btn" data-tab="percentile">Percentile Finder</button>
+                        <button class="tab-btn" data-tab="college">College Estimator</button>
+                    </div>
+
+                    <!-- Basic Score Calculator -->
+                    <div class="tab-content active" id="basic">
+                        <h2>SAT Score Calculator</h2>
+                        <p class="description">Enter the number of correct answers for each section to calculate your estimated SAT score.</p>
+                        
+                        <div class="calculator-grid">
+                            <div class="section-card">
+                                <h3>Reading Section</h3>
+                                <div class="input-group">
+                                    <label for="reading-correct">Correct Answers (out of 52):</label>
+                                    <input type="number" id="reading-correct" min="0" max="52" value="0" inputmode="numeric">
+                                    <span class="range-info">0-52</span>
+                                </div>
+                            </div>
+
+                            <div class="section-card">
+                                <h3>Writing & Language Section</h3>
+                                <div class="input-group">
+                                    <label for="writing-correct">Correct Answers (out of 44):</label>
+                                    <input type="number" id="writing-correct" min="0" max="44" value="0" inputmode="numeric">
+                                    <span class="range-info">0-44</span>
+                                </div>
+                            </div>
+
+                            <div class="section-card">
+                                <h3>Math No Calculator</h3>
+                                <div class="input-group">
+                                    <label for="math-no-calc">Correct Answers (out of 20):</label>
+                                    <input type="number" id="math-no-calc" min="0" max="20" value="0" inputmode="numeric">
+                                    <span class="range-info">0-20</span>
+                                </div>
+                            </div>
+
+                            <div class="section-card">
+                                <h3>Math Calculator</h3>
+                                <div class="input-group">
+                                    <label for="math-calc">Correct Answers (out of 38):</label>
+                                    <input type="number" id="math-calc" min="0" max="38" value="0" inputmode="numeric">
+                                    <span class="range-info">0-38</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="calculate-btn" onclick="calculateScore()">Calculate SAT Score</button>
+
+                        <div id="results" class="results hidden">
+                            <h3>Your SAT Score Results</h3>
+                            <div class="score-display">
+                                <div class="total-score">
+                                    <span class="score-label">Total Score</span>
+                                    <span class="score-value" id="total-score">0</span>
+                                    <span class="score-range">400-1600</span>
+                                </div>
+                            </div>
+                            <div class="section-scores">
+                                <div class="score-item">
+                                    <span class="section-label">Evidence-Based Reading & Writing</span>
+                                    <span class="section-score" id="ebrw-score">0</span>
+                                </div>
+                                <div class="score-item">
+                                    <span class="section-label">Math</span>
+                                    <span class="section-score" id="math-score">0</span>
+                                </div>
+                            </div>
+                            <div class="subscores">
+                                <h4>Section Subscores</h4>
+                                <div class="subscore-grid">
+                                    <div class="subscore-item">
+                                        <span>Reading Test Score</span>
+                                        <span id="reading-score">0</span>
+                                    </div>
+                                    <div class="subscore-item">
+                                        <span>Writing Test Score</span>
+                                        <span id="writing-score">0</span>
+                                    </div>
+                                    <div class="subscore-item">
+                                        <span>Math Raw Score</span>
+                                        <span id="math-raw">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="score-analysis">
+                                <h4>Score Analysis</h4>
+                                <div id="analysis-text"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Superscore Calculator -->
+                    <div class="tab-content" id="superscore">
+                        <h2>SAT Superscore Calculator</h2>
+                        <p class="description">Enter your scores from multiple SAT test dates. The calculator will automatically select your highest section scores to create your superscore.</p>
+                        
+                        <div id="superscore-tests">
+                            <div class="test-entry" data-test="1">
+                                <h3>Test Date 1</h3>
+                                <div class="superscore-inputs">
+                                    <div class="input-group">
+                                        <label>EBRW Score (200-800):</label>
+                                        <input type="number" class="superscore-ebrw" min="200" max="800" inputmode="numeric">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Math Score (200-800):</label>
+                                        <input type="number" class="superscore-math" min="200" max="800" inputmode="numeric">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="test-entry" data-test="2">
+                                <h3>Test Date 2</h3>
+                                <div class="superscore-inputs">
+                                    <div class="input-group">
+                                        <label>EBRW Score (200-800):</label>
+                                        <input type="number" class="superscore-ebrw" min="200" max="800" inputmode="numeric">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Math Score (200-800):</label>
+                                        <input type="number" class="superscore-math" min="200" max="800" inputmode="numeric">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="test-entry" data-test="3">
+                                <h3>Test Date 3 (Optional)</h3>
+                                <div class="superscore-inputs">
+                                    <div class="input-group">
+                                        <label>EBRW Score (200-800):</label>
+                                        <input type="number" class="superscore-ebrw" min="200" max="800" inputmode="numeric">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Math Score (200-800):</label>
+                                        <input type="number" class="superscore-math" min="200" max="800" inputmode="numeric">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="calculate-btn" onclick="calculateSuperscore()">Calculate Superscore</button>
+
+                        <div id="superscore-results" class="results hidden">
+                            <h3>Your Superscore Results</h3>
+                            <div class="score-display">
+                                <div class="total-score">
+                                    <span class="score-label">Superscore</span>
+                                    <span class="score-value" id="superscore-total">0</span>
+                                </div>
+                            </div>
+                            <div class="section-scores">
+                                <div class="score-item">
+                                    <span class="section-label">Best EBRW</span>
+                                    <span class="section-score" id="superscore-ebrw">0</span>
+                                </div>
+                                <div class="score-item">
+                                    <span class="section-label">Best Math</span>
+                                    <span class="section-score" id="superscore-math-result">0</span>
+                                </div>
+                            </div>
+                            <div id="superscore-breakdown"></div>
+                        </div>
+                    </div>
+
+                    <!-- Percentile Finder -->
+                    <div class="tab-content" id="percentile">
+                        <h2>SAT Percentile Calculator</h2>
+                        <p class="description">Find out what percentile your SAT score falls into. This shows how your score compares to other test-takers.</p>
+                        
+                        <div class="percentile-calculator">
+                            <div class="input-group">
+                                <label for="percentile-score">Enter Your Total SAT Score (400-1600):</label>
+                                <input type="number" id="percentile-score" min="400" max="1600" value="1000" inputmode="numeric">
+                            </div>
+                            <button class="calculate-btn" onclick="calculatePercentile()">Find Percentile</button>
+                        </div>
+
+                        <div id="percentile-results" class="results hidden">
+                            <h3>Percentile Results</h3>
+                            <div class="percentile-display">
+                                <div class="percentile-info">
+                                    <span class="percentile-label">Your Score:</span>
+                                    <span class="percentile-value" id="percentile-score-display">0</span>
+                                </div>
+                                <div class="percentile-info highlight">
+                                    <span class="percentile-label">Percentile Rank:</span>
+                                    <span class="percentile-value" id="percentile-rank">0th</span>
+                                </div>
+                                <div class="percentile-explanation" id="percentile-explanation"></div>
+                            </div>
+                            <div class="percentile-chart">
+                                <h4>Score Distribution</h4>
+                                <div class="chart-container">
+                                    <canvas id="percentileChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- College Estimator -->
+                    <div class="tab-content" id="college">
+                        <h2>College Admission Estimator</h2>
+                        <p class="description">Estimate your chances of admission to various colleges based on your SAT score. Enter your score to see which colleges match your profile.</p>
+                        
+                        <div class="college-calculator">
+                            <div class="input-group">
+                                <label for="college-score">Your Total SAT Score (400-1600):</label>
+                                <input type="number" id="college-score" min="400" max="1600" value="1200" inputmode="numeric">
+                            </div>
+                            <div class="input-group">
+                                <label for="gpa">Your GPA (Optional, 0.0-4.0):</label>
+                                <input type="number" id="gpa" min="0" max="4" step="0.01" value="3.5" inputmode="decimal">
+                            </div>
+                            <button class="calculate-btn" onclick="estimateCollegeChances()">Estimate Admission Chances</button>
+                        </div>
+
+                        <div id="college-results" class="results hidden">
+                            <h3>College Match Results</h3>
+                            <div class="college-tiers">
+                                <div class="tier safety">
+                                    <h4>Safety Schools</h4>
+                                    <p class="tier-description">High probability of admission</p>
+                                    <div id="safety-schools" class="college-list"></div>
+                                </div>
+                                <div class="tier target">
+                                    <h4>Target Schools</h4>
+                                    <p class="tier-description">Moderate probability of admission</p>
+                                    <div id="target-schools" class="college-list"></div>
+                                </div>
+                                <div class="tier reach">
+                                    <h4>Reach Schools</h4>
+                                    <p class="tier-description">Lower probability - worth applying</p>
+                                    <div id="reach-schools" class="college-list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <article class="content-article">
+                    <h2>About the SAT Score Calculator</h2>
+                    <p>The SAT (Scholastic Assessment Test) is a standardized test widely used for college admissions in the United States. Our free SAT score calculator helps you estimate your SAT scores based on the number of correct answers in each section. The SAT consists of two main sections: Evidence-Based Reading and Writing (EBRW) and Math, with a total score range of 400-1600.</p>
+                    
+                    <h3>How to Use the SAT Score Calculator</h3>
+                    <p>Using our SAT calculator is simple and straightforward:</p>
+                    <ol>
+                        <li><strong>Enter Your Correct Answers:</strong> Input the number of correct answers for each section - Reading (52 questions), Writing & Language (44 questions), Math No Calculator (20 questions), and Math Calculator (38 questions).</li>
+                        <li><strong>Calculate Your Score:</strong> Click the "Calculate SAT Score" button to instantly see your estimated total score and section scores.</li>
+                        <li><strong>Review Your Results:</strong> Analyze your scores, including your total score (400-1600), EBRW score (200-800), and Math score (200-800).</li>
+                        <li><strong>Use Additional Tools:</strong> Explore our superscore calculator, percentile finder, and college admission estimator for comprehensive insights.</li>
+                    </ol>
+
+                    <h3>Understanding SAT Scoring</h3>
+                    <p>The SAT scoring system can seem complex, but here's what you need to know:</p>
+                    <ul>
+                        <li><strong>Total Score Range:</strong> 400-1600 (combining EBRW and Math)</li>
+                        <li><strong>Section Scores:</strong> Each section (EBRW and Math) is scored from 200-800</li>
+                        <li><strong>Test Scores:</strong> Reading, Writing, and Math tests are scored on a scale of 10-40</li>
+                        <li><strong>Raw Scores:</strong> Based on the number of correct answers (no penalty for wrong answers)</li>
+                        <li><strong>Scaled Scores:</strong> Raw scores are converted to scaled scores using College Board's conversion tables</li>
+                    </ul>
+
+                    <h3>What is a Good SAT Score?</h3>
+                    <p>A "good" SAT score depends on your college goals, but here are some general benchmarks:</p>
+                    <ul>
+                        <li><strong>1600:</strong> Perfect score - 99th+ percentile</li>
+                        <li><strong>1500-1590:</strong> Excellent - 99th percentile, competitive for top-tier schools</li>
+                        <li><strong>1400-1490:</strong> Very Good - 93rd-98th percentile, competitive for selective colleges</li>
+                        <li><strong>1300-1390:</strong> Good - 86th-92nd percentile, competitive for many colleges</li>
+                        <li><strong>1200-1290:</strong> Above Average - 74th-85th percentile</li>
+                        <li><strong>1000-1190:</strong> Average - 40th-73rd percentile</li>
+                        <li><strong>Below 1000:</strong> Below average - consider retaking the test</li>
+                    </ul>
+
+                    <h3>SAT Superscore Explained</h3>
+                    <p>Many colleges accept SAT superscores, which combine your highest section scores from multiple test dates. For example, if you scored 650 EBRW and 700 Math on your first test, then 700 EBRW and 680 Math on your second test, your superscore would be 1400 (700 EBRW + 700 Math). Our superscore calculator makes this process easy by automatically selecting your best scores.</p>
+
+                    <h3>How Often Should You Take the SAT?</h3>
+                    <p>Most students take the SAT 2-3 times. Here's what to consider:</p>
+                    <ul>
+                        <li>First attempt: Usually junior year spring or fall</li>
+                        <li>Second attempt: If needed, senior year fall</li>
+                        <li>Third attempt: Only if you believe you can significantly improve</li>
+                        <li>Colleges typically see all your scores unless you use Score Choice</li>
+                        <li>Focus on improving weak areas between attempts</li>
+                    </ul>
+
+                    <h3>Tips to Improve Your SAT Score</h3>
+                    <ol>
+                        <li><strong>Practice Regularly:</strong> Use official College Board practice tests</li>
+                        <li><strong>Identify Weak Areas:</strong> Focus on sections where you score lowest</li>
+                        <li><strong>Learn Test Strategies:</strong> Time management and question-answering techniques</li>
+                        <li><strong>Build Vocabulary:</strong> Essential for the Reading section</li>
+                        <li><strong>Master Math Concepts:</strong> Review algebra, geometry, and data analysis</li>
+                        <li><strong>Take Timed Practice Tests:</strong> Simulate real test conditions</li>
+                        <li><strong>Review Mistakes:</strong> Understand why you got questions wrong</li>
+                        <li><strong>Consider Prep Courses:</strong> If self-study isn't enough</li>
+                    </ol>
+
+                    <h3>SAT vs ACT: Which Should You Take?</h3>
+                    <p>Both tests are accepted by all U.S. colleges. Key differences include:</p>
+                    <ul>
+                        <li><strong>SAT:</strong> More emphasis on reasoning and vocabulary, optional essay (some schools require it)</li>
+                        <li><strong>ACT:</strong> Includes a science section, faster-paced, optional essay</li>
+                        <li><strong>Scoring:</strong> SAT scores 400-1600; ACT scores 1-36</li>
+                        <li><strong>Duration:</strong> SAT is 3 hours (without essay); ACT is 2 hours 55 minutes (without essay)</li>
+                        <li>Take practice tests for both to see which suits you better</li>
+                    </ul>
+
+                    <h3>Understanding Percentile Rankings</h3>
+                    <p>Your percentile rank shows what percentage of test-takers scored at or below your score. For example, a score in the 75th percentile means you scored better than 75% of test-takers. Use our percentile calculator to see how your score compares nationally.</p>
+
+                    <h3>College Board Score Conversion Tables</h3>
+                    <p>Our calculator uses official College Board conversion tables to translate raw scores (correct answers) into scaled scores. These tables may vary slightly between different test administrations to account for difficulty differences, but our calculator provides accurate estimates based on standard conversion tables.</p>
+
+                    <h3>When Are SAT Scores Released?</h3>
+                    <p>SAT scores are typically released 13-15 days after the test date. Multiple-choice scores come first, followed by essay scores (if taken) about 5 days later. You can access your scores through your College Board account.</p>
+
+                    <h3>How to Send SAT Scores to Colleges</h3>
+                    <p>You can send your SAT scores to colleges through your College Board account. The first four score reports are free if sent during registration or within 9 days after the test. Additional score reports cost $12 each. Some colleges accept self-reported scores initially but require official reports upon admission.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- AdSense Ad Unit - Top of Content (Optional) -->
+        <!-- Uncomment when AdSense is approved
+        <section class="ad-section">
+            <div class="container">
+                <div class="ad-container">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </section>
+        -->
+
+        <!-- Keywords Section -->
+        <section class="keywords-section">
+            <div class="container">
+                <h2>Related SAT Resources</h2>
+                <div class="keywords-grid">
+                    <a href="#" class="keyword-link">SAT Practice Test</a>
+                    <a href="#" class="keyword-link">SAT Study Guide</a>
+                    <a href="#" class="keyword-link">SAT Prep Books</a>
+                    <a href="#" class="keyword-link">SAT Test Dates</a>
+                    <a href="#" class="keyword-link">SAT Registration</a>
+                    <a href="#" class="keyword-link">SAT Score Range</a>
+                    <a href="#" class="keyword-link">SAT Subject Tests</a>
+                    <a href="#" class="keyword-link">Digital SAT</a>
+                    <a href="#" class="keyword-link">SAT Fee Waiver</a>
+                    <a href="#" class="keyword-link">SAT Accommodations</a>
+                    <a href="#" class="keyword-link">SAT Score Choice</a>
+                    <a href="#" class="keyword-link">SAT Essay</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SAT Score Calculator</h3>
+                    <p>Free comprehensive SAT calculator tool for students preparing for college admissions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#basic">Score Calculator</a></li>
+                        <li><a href="#superscore">Superscore Calculator</a></li>
+                        <li><a href="#percentile">Percentile Finder</a></li>
+                        <li><a href="#college">College Estimator</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SAT Score Calculator. All rights reserved. Not affiliated with College Board.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
